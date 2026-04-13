@@ -1,0 +1,121 @@
+---
+
+---
+
+<section
+  id="hero"
+  class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden"
+>
+  <!-- Background pulse glow -->
+  <div
+    class="absolute inset-0 flex items-center justify-center pointer-events-none"
+    aria-hidden="true"
+  >
+    <div
+      class="w-[600px] h-[600px] rounded-full bg-spark/5 blur-[120px] animate-pulse-glow"
+    >
+    </div>
+  </div>
+
+  <!-- Logo fade-in -->
+  <div
+    class="relative z-10 flex flex-col items-center opacity-0 animate-fade-in"
+  >
+    <img
+      src="/logo.svg"
+      alt="Intermicronational Art Gallery Logo"
+      class="h-24 md:h-36 w-auto mb-8"
+    />
+
+    <h1
+      class="font-serif font-light text-3xl md:text-5xl lg:text-6xl text-center tracking-wide leading-tight mb-4"
+    >
+      <span class="block">Intermicronational</span>
+      <span class="block">Art Gallery <span class="text-spark">2026</span></span
+      >
+    </h1>
+
+    <p
+      class="font-mono text-[11px] md:text-xs uppercase tracking-[6px] text-ash mt-2"
+    >
+      First Impression
+    </p>
+  </div>
+
+  <!-- Red Thread / Horizon Line -->
+  <div class="absolute top-1/2 left-0 w-full z-0" aria-hidden="true">
+    <div class="red-thread"></div>
+  </div>
+
+  <!-- Tagline -->
+  <div class="relative z-10 mt-16 md:mt-24 opacity-0 animate-fade-in-slow">
+    <p
+      class="font-serif font-light text-lg md:text-2xl text-bone/80 italic text-center max-w-xl mx-auto px-6"
+    >
+      "From a private thought to a public reality."
+    </p>
+  </div>
+
+  <!-- Subtle scroll indicator -->
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-slow"
+    aria-hidden="true"
+  >
+    <div
+      class="w-px h-12 bg-gradient-to-b from-transparent via-spark/40 to-transparent"
+    >
+    </div>
+  </div>
+</section>
+
+<!-- Boot Sequence Overlay -->
+<div
+  id="boot-overlay"
+  class="fixed inset-0 z-[10000] bg-void flex flex-col items-center justify-center transition-opacity duration-1000"
+>
+  <div
+    class="font-mono text-[11px] text-spark/70 space-y-1 text-left max-w-md px-6"
+  >
+    <p class="boot-line" style="animation-delay: 0s">
+      INTERMICRONATIONAL ARCHIVE SYSTEM v2.026
+    </p>
+    <p class="boot-line" style="animation-delay: 0.3s">
+      INITIALIZING SECURE CONNECTION...
+    </p>
+    <p class="boot-line" style="animation-delay: 0.6s">
+      DECRYPTING DIPLOMATIC ARCHIVES...
+    </p>
+    <p class="boot-line" style="animation-delay: 0.9s">
+      CLEARANCE LEVEL: PUBLIC
+    </p>
+    <p class="boot-line" style="animation-delay: 1.2s">
+      STATUS: <span class="text-spark">ACCESS GRANTED</span>
+    </p>
+  </div>
+</div>
+
+<style>
+  .boot-line {
+    opacity: 0;
+    animation: boot-text 0.1s ease forwards;
+  }
+</style>
+
+<script>
+  // Boot sequence auto-dismiss
+  const overlay = document.getElementById("boot-overlay");
+  if (overlay) {
+    // Check if already seen in this session
+    if (sessionStorage.getItem("boot-seen")) {
+      overlay.remove();
+    } else {
+      setTimeout(() => {
+        overlay.style.opacity = "0";
+        setTimeout(() => {
+          overlay.remove();
+          sessionStorage.setItem("boot-seen", "1");
+        }, 1000);
+      }, 2200);
+    }
+  }
+</script>

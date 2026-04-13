@@ -1,17 +1,131 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.astro";
+import Hero from "../components/Hero.astro";
+import ArtworkCard from "../components/ArtworkCard.astro";
+import Footer from "../components/Footer.astro";
+import { artworks } from "../data/artworks";
 
+// Featured / favorite artworks for homepage
+const featured = artworks.slice(0, 4);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <Navigation />
+  <Hero />
+
+  <!-- Featured Works Section -->
+  <section class="relative max-w-7xl mx-auto px-6 md:px-12 py-24">
+    <!-- Section header -->
+    <div class="flex items-center gap-4 mb-4">
+      <div class="h-px flex-1 bg-ash/10"></div>
+      <h2 class="font-mono text-[10px] uppercase tracking-[6px] text-ash/50">
+        Selected Works
+      </h2>
+      <div class="h-px flex-1 bg-ash/10"></div>
+    </div>
+
+    <p
+      class="text-center font-serif font-light text-lg text-bone/40 italic mb-16"
+    >
+      A curated selection from the diplomatic archives
+    </p>
+
+    <!-- Artwork grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
+      {featured.map((artwork) => <ArtworkCard artwork={artwork} />)}
+    </div>
+
+    <!-- View all link -->
+    <div class="text-center mt-16">
+      <a
+        href="/gallery"
+        class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[4px] text-ash hover:text-spark transition-colors duration-500 group"
+      >
+        <span
+          class="h-px w-8 bg-ash/30 group-hover:bg-spark group-hover:w-12 transition-all duration-500"
+        ></span>
+        Enter the Archives
+        <span
+          class="h-px w-8 bg-ash/30 group-hover:bg-spark group-hover:w-12 transition-all duration-500"
+        ></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- About / Manifesto Section -->
+  <section class="relative max-w-3xl mx-auto px-6 md:px-12 py-24">
+    <div class="border border-ash/10 p-8 md:p-16 relative">
+      <!-- Corner accents -->
+      <div
+        class="absolute top-0 left-0 w-4 h-4 border-t border-l border-spark/40"
+      >
+      </div>
+      <div
+        class="absolute top-0 right-0 w-4 h-4 border-t border-r border-spark/40"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-spark/40"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-spark/40"
+      >
+      </div>
+
+      <p
+        class="font-mono text-[9px] uppercase tracking-[4px] text-spark/60 mb-8"
+      >
+        Diplomatic Communiqué — 2026
+      </p>
+
+      <blockquote
+        class="font-serif font-light text-xl md:text-2xl leading-relaxed text-bone/70"
+      >
+        "Art possesses a unique power to bridge the divide between micronations,
+        turning rivals into collaborators through a shared creative language.
+        While the medium of expression is personal, the impact lies in how that
+        art is presented to the world to foster connection."
+      </blockquote>
+
+      <div class="mt-8 h-px bg-spark/30"></div>
+
+      <p class="font-mono text-[10px] text-ash/40 mt-6 leading-relaxed">
+        The "First Impression" theme focuses on the immediate atmosphere and
+        feeling of starting a micronation — capturing the transition from a
+        private idea to a public reality. Compatible with any art style, from
+        raw pencil sketches to cinematic photography.
+      </p>
+
+      <div class="mt-8 flex items-center gap-4">
+        <div class="stamp animate font-mono">Declassified</div>
+        <span class="font-mono text-[9px] text-ash/30">REF: IAG-2026-FI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Submit -->
+  <section class="relative max-w-4xl mx-auto px-6 md:px-12 py-16">
+    <div class="text-center">
+      <h2 class="font-serif font-light text-2xl md:text-3xl tracking-wide mb-4">
+        Submit Your Work
+      </h2>
+      <p
+        class="font-mono text-[11px] text-ash/50 uppercase tracking-[3px] mb-8"
+      >
+        All submissions accepted via Discord
+      </p>
+      <p
+        class="font-sans text-sm text-ash/60 max-w-lg mx-auto leading-relaxed mb-8"
+      >
+        Share your art in our Discord server — any medium, any style. Your
+        Discord metadata becomes part of the artwork's permanent diplomatic
+        record.
+      </p>
+      <div class="h-px w-16 bg-spark/30 mx-auto"></div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-6 bg-gradient-to-b from-void/90 to-transparent"
+>
+  <a href="/" class="flex items-center gap-3 group" aria-label="Home">
+    <img
+      src="/logo.svg"
+      alt="Intermicronational Art Gallery"
+      class="h-8 w-auto transition-transform duration-500 group-hover:scale-110"
+    />
+    <span
+      class="hidden sm:inline font-mono text-[10px] uppercase tracking-[4px] text-ash"
+    >
+      IAG 2026
+    </span>
+  </a>
+
+  <div class="flex items-center gap-6 md:gap-10">
+    <a
+      href="/"
+      class:list={[
+        "font-mono text-[11px] uppercase tracking-[3px] transition-colors duration-300",
+        currentPath === "/" ? "text-spark" : "text-ash hover:text-bone",
+      ]}
+    >
+      Home
+    </a>
+    <a
+      href="/gallery"
+      class:list={[
+        "font-mono text-[11px] uppercase tracking-[3px] transition-colors duration-300",
+        currentPath.startsWith("/gallery")
+          ? "text-spark"
+          : "text-ash hover:text-bone",
+      ]}
+    >
+      Gallery
+    </a>
+    <a
+      href="/about"
+      class:list={[
+        "font-mono text-[11px] uppercase tracking-[3px] transition-colors duration-300",
+        currentPath === "/about" ? "text-spark" : "text-ash hover:text-bone",
+      ]}
+    >
+      About
+    </a>
+  </div>
+</nav>

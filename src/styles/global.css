@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+/* ===== Theme Tokens ===== */
+@theme {
+  --color-void: #000000;
+  --color-spark: #cd0707;
+  --color-spark-dim: #8a0505;
+  --color-bone: #f5f0eb;
+  --color-ash: #888888;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+
+  --animate-fade-in: fade-in 2.5s ease-out forwards;
+  --animate-fade-in-slow: fade-in 4s ease-out forwards;
+  --animate-red-thread: red-thread 3s ease-in-out forwards 1.5s;
+  --animate-typewriter: typewriter 0.8s steps(20) forwards;
+  --animate-stamp: stamp 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-grain: grain 0.5s steps(6) infinite;
+  --animate-scan-line: scan-line 8s linear infinite;
+  --animate-boot-text: boot-text 0.5s steps(1) forwards;
+  --animate-cursor-blink: cursor-blink 1s steps(1) infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes red-thread {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes stamp {
+    0% {
+      transform: scale(3) rotate(-15deg);
+      opacity: 0;
+    }
+    70% {
+      transform: scale(0.95) rotate(-15deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) rotate(-15deg);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes grain {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-5%, -10%);
+    }
+    20% {
+      transform: translate(-15%, 5%);
+    }
+    30% {
+      transform: translate(7%, -25%);
+    }
+    40% {
+      transform: translate(-5%, 25%);
+    }
+    50% {
+      transform: translate(-15%, 10%);
+    }
+    60% {
+      transform: translate(15%, 0%);
+    }
+    70% {
+      transform: translate(0%, 15%);
+    }
+    80% {
+      transform: translate(3%, 35%);
+    }
+    90% {
+      transform: translate(-10%, 10%);
+    }
+  }
+
+  @keyframes scan-line {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes boot-text {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes cursor-blink {
+    0%,
+    50% {
+      border-right-color: var(--color-spark);
+    }
+    51%,
+    100% {
+      border-right-color: transparent;
+    }
+  }
+}
+
+/* ===== Base Styles ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-void);
+  color: var(--color-bone);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-spark);
+  color: white;
+}
+
+/* ===== Film Grain Overlay ===== */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: var(--animate-grain);
+}
+
+/* ===== Vignette ===== */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* ===== Custom Cursor ===== */
+@media (pointer: fine) {
+  * {
+    cursor:
+      url("data:image/svg+xml,%3Csvg width='16' height='20' viewBox='0 0 16 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8 19L10 10L16 8L1 1Z' fill='%23CD0707' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E")
+        1 1,
+      auto;
+  }
+
+  a,
+  button,
+  [role="button"],
+  .cursor-pointer {
+    cursor:
+      url("data:image/svg+xml,%3Csvg width='24' height='28' viewBox='0 0 16 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8 19L10 10L16 8L1 1Z' fill='%23CD0707' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E")
+        1 1,
+      pointer;
+  }
+}
+
+/* ===== Typewriter Effect ===== */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-spark);
+  animation: var(--animate-typewriter), var(--animate-cursor-blink);
+  width: fit-content;
+}
+
+/* ===== Artwork Card Hover ===== */
+.artwork-card img {
+  filter: grayscale(100%) brightness(0.7);
+  transition:
+    filter 0.8s ease,
+    transform 0.8s ease;
+}
+
+.artwork-card:hover img {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.02);
+}
+
+.artwork-card .artwork-label {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.6s ease 0.1s,
+    transform 0.6s ease 0.1s;
+}
+
+.artwork-card:hover .artwork-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Declassified Stamp ===== */
+.stamp {
+  display: inline-block;
+  border: 3px solid var(--color-spark);
+  color: var(--color-spark);
+  padding: 4px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0;
+}
+
+.stamp.animate {
+  animation: var(--animate-stamp);
+}
+
+/* ===== Redacted Text ===== */
+.redacted {
+  background-color: var(--color-bone);
+  color: var(--color-bone);
+  transition:
+    background-color 1s ease,
+    color 1s ease;
+  padding: 0 2px;
+}
+
+.redacted.revealed {
+  background-color: transparent;
+  color: var(--color-bone);
+}
+
+/* ===== Red Thread ===== */
+.red-thread {
+  height: 1px;
+  background: var(--color-spark);
+  animation: var(--animate-red-thread);
+  box-shadow:
+    0 0 12px var(--color-spark),
+    0 0 4px var(--color-spark);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-spark-dim);
+  border-radius: 2px;
+}
+
+/* ===== View Transition ===== */
+::view-transition-old(artwork-image),
+::view-transition-new(artwork-image) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+/* ===== Scan Line Effect ===== */
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-spark),
+    transparent
+  );
+  opacity: 0.15;
+  z-index: 9997;
+  pointer-events: none;
+  animation: var(--animate-scan-line);
+}

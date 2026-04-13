@@ -1,0 +1,51 @@
+---
+import "../styles/global.css";
+import "@fontsource/playfair-display/400.css";
+import "@fontsource/playfair-display/700.css";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/roboto-mono/300.css";
+import "@fontsource/roboto-mono/400.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "First Impression — Intermicronational Art Gallery 2026",
+  description = "From a private thought to a public reality. The First Impression Intermicronational Art Gallery captures the spark of building something new.",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/theme.jpeg" />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-void text-bone antialiased">
+    <!-- Film Grain Overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Vignette -->
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- Scan Line -->
+    <div class="scan-line" aria-hidden="true"></div>
+
+    <slot />
+  </body>
+</html>

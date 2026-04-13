@@ -1,0 +1,70 @@
+---
+import type { Artwork } from "../data/artworks";
+
+interface Props {
+  artwork: Artwork;
+}
+
+const { artwork } = Astro.props;
+---
+
+<a href={`/gallery/${artwork.id}`} class="artwork-card group block relative">
+  <!-- Floating frame with generous padding -->
+  <div class="p-4 md:p-8">
+    <div class="relative overflow-hidden bg-void">
+      <!-- Placeholder / image -->
+      <div class="aspect-[4/5] bg-void/50 relative">
+        <img
+          src={artwork.image}
+          alt={artwork.title}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover"
+          style={`view-transition-name: artwork-${artwork.id}`}
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+        />
+        <!-- Fallback placeholder when no image -->
+        <div
+          class="absolute inset-0 flex-col items-center justify-center bg-void border border-ash/10 hidden"
+        >
+          <div
+            class="font-mono text-[10px] text-ash/40 uppercase tracking-[4px] mb-2"
+          >
+            {artwork.exhibitNumber}
+          </div>
+          <div class="font-serif text-lg text-bone/20 italic">
+            {artwork.title}
+          </div>
+          <div class="mt-4 w-12 h-px bg-spark/30"></div>
+          <div class="font-mono text-[9px] text-ash/20 mt-2">
+            {artwork.medium}
+          </div>
+        </div>
+      </div>
+
+      <!-- Label overlay (appears on hover) -->
+      <div
+        class="artwork-label absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-void/90 to-transparent"
+      >
+        <h3
+          class="font-serif font-light text-base md:text-lg text-bone tracking-wide"
+        >
+          {artwork.title}
+        </h3>
+        <p class="font-mono text-[10px] text-ash mt-1 uppercase tracking-wider">
+          {artwork.artist}
+        </p>
+      </div>
+    </div>
+
+    <!-- Discord metadata label (always visible, small) -->
+    <div class="mt-3 flex items-center justify-between">
+      <span class="font-mono text-[9px] text-ash/40 uppercase tracking-wider">
+        {artwork.coordinates}
+      </span>
+      <span class="font-mono text-[9px] text-ash/30">
+        {artwork.discord.user} · {artwork.discord.channel}
+      </span>
+    </div>
+  </div>
+</a>

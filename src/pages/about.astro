@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="About — Intermicronational Art Gallery 2026">
+  <Navigation />
+
+  <main class="pt-28 md:pt-36 pb-12">
+    <div class="max-w-3xl mx-auto px-6 md:px-12">
+      <p
+        class="font-mono text-[9px] uppercase tracking-[4px] text-spark/60 mb-3"
+      >
+        Diplomatic Brief — Classification: Public
+      </p>
+      <h1 class="font-serif font-light text-3xl md:text-5xl tracking-wide mb-6">
+        About the Gallery
+      </h1>
+      <div class="h-px bg-gradient-to-r from-spark/40 to-transparent mb-12">
+      </div>
+
+      <!-- The Theme -->
+      <div class="space-y-8 mb-16">
+        <div>
+          <h2
+            class="font-mono text-[10px] uppercase tracking-[4px] text-spark/50 mb-4"
+          >
+            The Theme: First Impression
+          </h2>
+          <p class="font-sans text-base text-bone/60 leading-relaxed">
+            The "First Impression" theme focuses on the immediate atmosphere and
+            feeling of starting a micronation, capturing the transition from a
+            private idea to a public reality. It is designed to be compatible
+            with any art style, inviting submissions that range from raw pencil
+            sketches, oil paintings, cinematic film clips and photography of
+            spaces.
+          </p>
+        </div>
+
+        <p class="font-sans text-base text-bone/60 leading-relaxed">
+          The gallery emphasizes the "vibe" of those initial moments, allowing
+          artists to use any form — whether digital or on paper — to illustrate
+          the spark of building something new.
+        </p>
+      </div>
+
+      <!-- The Visual Language -->
+      <div class="border border-ash/10 p-8 md:p-12 relative mb-16">
+        <div
+          class="absolute top-0 left-0 w-4 h-4 border-t border-l border-spark/40"
+        >
+        </div>
+        <div
+          class="absolute top-0 right-0 w-4 h-4 border-t border-r border-spark/40"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-spark/40"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-spark/40"
+        >
+        </div>
+
+        <h2
+          class="font-mono text-[10px] uppercase tracking-[4px] text-spark/50 mb-6"
+        >
+          Visual Language
+        </h2>
+
+        <div class="space-y-4 font-sans text-sm text-bone/50 leading-relaxed">
+          <p>
+            <span class="text-bone/70 font-medium">Contrast</span> — The raw versus
+            the refined. Early sketches and drafts alongside final gallery presentations.
+          </p>
+          <p>
+            <span class="text-bone/70 font-medium">The Void</span> — Pure black as
+            the canvas of possibility. Every artwork emerges from darkness.
+          </p>
+          <p>
+            <span class="text-bone/70 font-medium">The Spark</span> — Red as the first
+            mark, the first boundary, the first declaration of intent.
+          </p>
+          <p>
+            <span class="text-bone/70 font-medium">The Archive</span> — Each piece
+            is treated as a diplomatic document, stamped, cataloged, and preserved.
+          </p>
+        </div>
+      </div>
+
+      <!-- How to Submit -->
+      <div class="mb-16">
+        <h2
+          class="font-mono text-[10px] uppercase tracking-[4px] text-spark/50 mb-6"
+        >
+          How to Submit
+        </h2>
+        <div class="space-y-4 font-sans text-sm text-bone/50 leading-relaxed">
+          <p>
+            All artwork submissions are accepted through our Discord server.
+            Simply share your work in the appropriate channel, and it will be
+            reviewed and added to the gallery.
+          </p>
+          <p>
+            Your Discord identity becomes part of the artwork's permanent record
+            — treated as the official diplomatic documentation of its origin.
+          </p>
+          <p class="font-mono text-[10px] text-ash/40">
+            Accepted formats: Any — sketches, paintings, photography, digital
+            art, film stills
+          </p>
+        </div>
+      </div>
+
+      <!-- Classification footer -->
+      <div class="text-center py-8">
+        <div class="stamp animate inline-block">
+          Intermicronational Art Gallery
+        </div>
+        <p
+          class="font-mono text-[8px] text-ash/20 mt-4 uppercase tracking-[3px]"
+        >
+          est. MMXXVI · gallery.sakorn.com
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import { vibeLabels } from "../data/artworks";
+
+const vibes = ["all", ...Object.keys(vibeLabels)];
+---
+
+<div class="flex flex-wrap items-center gap-3 md:gap-4 py-6">
+  <span class="font-mono text-[9px] uppercase tracking-[4px] text-ash/50 mr-2">
+    Filter by vibe:
+  </span>
+  {
+    vibes.map((vibe) => (
+      <a
+        href={vibe === "all" ? "/gallery" : `/gallery?vibe=${vibe}`}
+        data-vibe={vibe}
+        class="vibe-btn font-mono text-[10px] uppercase tracking-[2px] px-3 py-1.5 border transition-all duration-300 border-ash/20 text-ash/60 hover:border-ash/40 hover:text-bone"
+      >
+        {vibe === "all" ? "All Works" : vibeLabels[vibe]}
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  function highlightActiveVibe() {
+    const params = new URLSearchParams(window.location.search);
+    const currentVibe = params.get("vibe") || "all";
+    document.querySelectorAll<HTMLAnchorElement>(".vibe-btn").forEach((btn) => {
+      const vibe = btn.dataset.vibe;
+      if (vibe === currentVibe) {
+        btn.classList.remove("border-ash/20", "text-ash/60");
+        btn.classList.add("border-spark", "text-spark", "bg-spark/10");
+      } else {
+        btn.classList.remove("border-spark", "text-spark", "bg-spark/10");
+        btn.classList.add("border-ash/20", "text-ash/60");
+      }
+    });
+  }
+  highlightActiveVibe();
+</script>
