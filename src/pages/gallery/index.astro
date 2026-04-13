@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navigation from "../../components/Navigation.astro";
 import ArtworkCard from "../../components/ArtworkCard.astro";
-import VibeFilter from "../../components/VibeFilter.astro";
 import Footer from "../../components/Footer.astro";
 import { artworks } from "../../data/artworks";
 ---
@@ -30,9 +29,6 @@ import { artworks } from "../../data/artworks";
         </div>
       </div>
 
-      <!-- Vibe Filter -->
-      <VibeFilter />
-
       <!-- Exhibit count -->
       <p
         id="exhibit-count"
@@ -54,47 +50,8 @@ import { artworks } from "../../data/artworks";
           ))
         }
       </div>
-
-      <div id="no-results" class="text-center py-24 hidden">
-        <p class="font-mono text-[11px] text-ash/40 uppercase tracking-[3px]">
-          No exhibits found for this classification
-        </p>
-        <p class="font-mono text-[9px] text-ash/20 mt-2">
-          Try selecting a different vibe filter
-        </p>
-      </div>
     </div>
   </main>
 
   <Footer />
 </BaseLayout>
-
-<script>
-  function filterArtworks() {
-    const params = new URLSearchParams(window.location.search);
-    const vibe = params.get("vibe") || "all";
-    const grid = document.getElementById("artwork-grid");
-    const countEl = document.getElementById("exhibit-count");
-    const noResults = document.getElementById("no-results");
-    if (!grid) return;
-
-    const cards = grid.querySelectorAll<HTMLElement>("[data-vibes]");
-    let visible = 0;
-
-    cards.forEach((card) => {
-      const vibes: string[] = JSON.parse(card.dataset.vibes || "[]");
-      const show = vibe === "all" || vibes.includes(vibe);
-      card.style.display = show ? "" : "none";
-      if (show) visible++;
-    });
-
-    if (countEl) {
-      countEl.textContent = `${visible} exhibit${visible !== 1 ? "s" : ""} on record`;
-    }
-    if (noResults) {
-      noResults.classList.toggle("hidden", visible > 0);
-    }
-  }
-
-  filterArtworks();
-</script>

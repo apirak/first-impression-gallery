@@ -1,10 +1,4 @@
-export type Vibe =
-  | "the-hope"
-  | "the-chaos"
-  | "the-foundation"
-  | "the-silence"
-  | "the-spark"
-  | "the-joy";
+export type Vibe = "serious";
 
 export interface Artwork {
   id: string;
@@ -25,12 +19,7 @@ export interface Artwork {
 }
 
 export const vibeLabels: Record<string, string> = {
-  "the-hope": "The Hope",
-  "the-chaos": "The Chaos",
-  "the-foundation": "The Foundation",
-  "the-silence": "The Silence",
-  "the-spark": "The Spark",
-  "the-joy": "The Joy",
+  serious: "Serious",
 };
 
 export const artworks: Artwork[] = [
@@ -41,7 +30,7 @@ export const artworks: Artwork[] = [
     description:
       "A sweeping oil painting capturing the moment a line is drawn on untouched land — the first border of a nation that exists only in the minds of its founders. The warm reds bleed into cold blues, symbolizing the tension between ambition and uncertainty.",
     medium: "Oil on Canvas",
-    vibe: ["the-hope"],
+    vibe: ["serious"],
     image: "/artworks/sample_1.jpg",
     discord: {
       user: "@delegate_alpha",
@@ -58,7 +47,7 @@ export const artworks: Artwork[] = [
     description:
       "A raw pencil sketch of scattered words and crossed-out paragraphs — the first attempt at writing a founding document. The chaos of creation is preserved in every smudge and erasure mark.",
     medium: "Pencil on Paper",
-    vibe: ["the-chaos", "the-spark"],
+    vibe: ["serious"],
     image: "/artworks/sample_2.jpg",
     discord: {
       user: "@citizen_x",
@@ -75,7 +64,7 @@ export const artworks: Artwork[] = [
     description:
       "A cinematic photograph of an empty room with a single chair and a microphone — waiting for the first speech that will never be forgotten. The silence is deafening, the potential infinite.",
     medium: "Digital Photography",
-    vibe: ["the-silence"],
+    vibe: ["serious"],
     image: "/artworks/sample_3.jpg",
     discord: {
       user: "@archivist",
@@ -92,7 +81,7 @@ export const artworks: Artwork[] = [
     description:
       "A digital illustration exploring color theory and symbolism for a nation's first flag. Dozens of variations overlap, each one a different possible future for a country that hasn't yet decided what it stands for.",
     medium: "Digital Illustration",
-    vibe: ["the-foundation", "the-hope"],
+    vibe: ["serious"],
     image: "/artworks/sample_4.jpg",
     discord: {
       user: "@vex_bureau",
@@ -109,7 +98,7 @@ export const artworks: Artwork[] = [
     description:
       "An abstract expressionist piece in violent reds and blacks — the raw energy of an idea exploding into existence. No form, no plan, just pure creative ignition. The paint was reportedly thrown at the canvas.",
     medium: "Acrylic on Canvas",
-    vibe: ["the-spark", "the-chaos"],
+    vibe: ["serious"],
     image: "/artworks/sample_5.jpg",
     discord: {
       user: "@pyra_art",
@@ -126,7 +115,7 @@ export const artworks: Artwork[] = [
     description:
       "A meticulous ink drawing of an imaginary topographical map — mountains, rivers, and cities that exist only in the cartographer's mind. Every contour line is a promise of what could be.",
     medium: "Ink on Parchment",
-    vibe: ["the-foundation"],
+    vibe: ["serious"],
     image: "/artworks/sample_6.jpg",
     discord: {
       user: "@meridian_maps",

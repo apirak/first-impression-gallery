@@ -40,7 +40,7 @@ const vibeList = artwork.vibe.map((v) => vibeLabels[v] || v);
             <img
               src={artwork.image}
               alt={artwork.title}
-              class="w-full aspect-[4/5] object-cover bg-void"
+              class="w-full h-auto object-contain bg-void"
               style={`view-transition-name: artwork-${artwork.id}`}
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
             />
