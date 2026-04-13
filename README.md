@@ -13,7 +13,7 @@ An online gallery showcasing artworks from the Intermicronational Art Gallery 20
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/        # Reusable UI components
 │   ├── ArtworkCard.astro
